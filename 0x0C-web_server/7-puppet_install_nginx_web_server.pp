@@ -1,38 +1,25 @@
 # To install & configure nginx on a server using Puppet
 
-$config = "server {
-	listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html;
-        location /redirect_me {
-                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-        }
-}"
-
-package { 'nginx':  # Installs an Nginx server
-ensure	=> 'installed',
+package {'nginx':
+  ensure => 'present',
 }
 
-file { 'index.html':
-ensure	=> 'present',
-path	=> '/var/www/html/index.html',
-content	=> 'Hello World!',
-mode	=> '0644'
+exec {'install':
+  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
+  provider => shell,
+
 }
 
-file { 'server_config':
-ensure	=> 'present',
-path 	=> '/etc/nginx/sites-available/default',
-content => $config
+exec {'Hello':
+  command  => 'echo "Hello World!" | sudo tee /var/www/html/index.html',
+  provider => shell,
 }
 
-exec { 'service nginx restart':
-path	=> ['/usr/sbin', '/usr/bin']
+exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/breemolahcollections.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+  provider => shell,
 }
 
-# OR
-# exec {'install':
-#   provider => shell,
-#   command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx ; echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html ; sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Dikachis permanent;/" /etc/nginx/sites-available/default ; sudo service nginx start',
-# }
+exec {'run':
+  command  => 'sudo service nginx restart',
+  provider => shell,
+}
