@@ -37,6 +37,7 @@ frontend web-frontend
         bind *:80
         mode http
         bind *:443 ssl crt /etc/letsencrypt/live/wrashtechservices.tech/fullchain.pem
+	http-request set-header X-Forwarded-Proto https
         default_backend web-backend
 backend web-backend
         balance roundrobin
