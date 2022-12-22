@@ -33,14 +33,17 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend web-frontend
+frontend web_frontend_http
         bind *:80
-        mode http
-        bind *:443 ssl crt /etc/letsencrypt/live/wrashtechservices.tech/fullchain.pem
-	http-request set-header X-Forwarded-Proto https
-        default_backend web-backend
-backend web-backend
+        redirect scheme https code 301 if !{ ssl_fc }
+        http-request set-header X-Forwarded-Proto http
+        default_backend web_servers
+
+frontend web_frontend_https
+        bind *:443 ssl crt /etc/ssl/www.krummitz.tech/www.krummitz.tech.pem
+        http-request set-header X-Forwarded-Proto https
+        default_backend web_servers
+backend web_servers
         balance roundrobin
-        option forwardfor
-        server 54904-web-01 54.157.144.57:80 check
-        server 54904-web-02 3.85.148.165:80 check
+        server 557-web-01 34.139.132.155:80 check
+        server 557-web-02 34.75.141.79:80 check
