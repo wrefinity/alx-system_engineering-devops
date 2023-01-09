@@ -8,7 +8,7 @@
 
 
 ### Warning!
-** Note: when you deny port 22/TCP and log out of your server, you will not be able to reconnect to your server via SSH, and we will not be able to recover it. Take note that when u install UFW at first instance port 22 is blocked by defaul, hence, you will have to unblocked it before existing the server**
+** Note: when you deny port 22/TCP and log out of your server, you will not be able to reconnect to your server via SSH, and we will not be able to recover it. Take note that when u install UFW at first instance port 22 is blocked by defaul, hence, you will have to unblocked it before existing the server **
 
 # Files & Description
 | File | Description|
