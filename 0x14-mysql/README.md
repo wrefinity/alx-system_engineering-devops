@@ -9,5 +9,18 @@
 # syntax: CREATE USER 'username'@'host' IDENTIFIED BY 'password';
 CREATE USER 'holberton_user '@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
 # grant replication priviledege holberton user 
-GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost'
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+```
+
+## GRANTING PERMISSION 
+```
+GRANT SELECT ON tyrell_corp.nexus6 TO  'holberton_user'@'localhost';
+```
+
+## CREATING A REPLICA USER
+```
+# creating a replica user
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION CLIENT ON *.* TO 'replica_user'@'%';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
 ```
