@@ -19,6 +19,7 @@ insert into tyrell_corp.nexus6 (id, name) values (1, "Leon");
 ## GRANTING PERMISSION 
 ```
 GRANT SELECT ON tyrell_corp.nexus6 TO  'holberton_user'@'localhost';
+GRANT SELECT ON mysql.user TO  'holberton_user'@'localhost';
 ```
 
 ## CREATING A REPLICA USER
