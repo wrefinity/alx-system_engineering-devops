@@ -11,7 +11,10 @@ CREATE USER 'holberton_user '@'localhost' IDENTIFIED BY 'projectcorrection280hbt
 # grant replication priviledege holberton user 
 GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
 ```
-
+### CREATING TABLE
+```
+CREATE TABLE tyrell_corp.nexus6 (id INT PRIMARY KEY, name VARCHAR(200) NOT NULL );
+```
 ## GRANTING PERMISSION 
 ```
 GRANT SELECT ON tyrell_corp.nexus6 TO  'holberton_user'@'localhost';
