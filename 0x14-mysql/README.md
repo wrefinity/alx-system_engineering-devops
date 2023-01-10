@@ -14,6 +14,7 @@ GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
 ### CREATING TABLE
 ```
 CREATE TABLE tyrell_corp.nexus6 (id INT PRIMARY KEY, name VARCHAR(200) NOT NULL );
+insert into tyrell_corp.nexus6 (name) values ("Leon");
 ```
 ## GRANTING PERMISSION 
 ```
