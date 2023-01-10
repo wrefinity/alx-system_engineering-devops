@@ -8,4 +8,6 @@
 ```
 # syntax: CREATE USER 'username'@'host' IDENTIFIED BY 'password';
 CREATE USER 'holberton_user '@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+# grant replication priviledege holberton user 
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost'
 ```
