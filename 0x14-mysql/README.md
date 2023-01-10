@@ -3,4 +3,4 @@
 
 ## Requirements
  ** Install MYSQL 5.7.x **
-- [What is a firewall](https://en.wikipedia.org/wiki/Firewall_%28computing%29)
+- [Install MYSQL 5.7.x](https://www.vultr.com/docs/how-to-install-mysql-5-7-on-ubuntu-20-04/)
